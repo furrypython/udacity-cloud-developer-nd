@@ -6,7 +6,7 @@ export const config = {
     "username": process.env.POSTGRES_USERNAME, //"udagramreidb",
     "password": process.env.POSTGRES_PASSWORD, //"process.env.udagramreidb",
     "database": process.env.POSTGRES_DATABASE, //"postgres",
-    "host": process.env.POSTGRES_HOST, //"udagramreidb.cggzojrlznin.us-east-1.rds.amazonaws.com",
+    "host": process.env.POSTGRES_HOST, //[my RDS] "udagramreidb.cggzojrlznin.us-east-1.rds.amazonaws.com",
     "dialect": process.env.POSTGRES, //"postgres",
     "aws_region": process.env.AWS_REGION, //"us-east-1",
     "aws_profile": process.env.AWS_PROFILE, //"default",
