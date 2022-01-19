@@ -9,6 +9,9 @@ import { V0MODELS } from './controllers/v0/model.index';
 
 (async () => {
   await sequelize.addModels(V0MODELS);
+  // Make sure that 
+  // our database is in sync with our expected models within sequalize, 
+  // i.e. that everything is on the same level of updates.
   await sequelize.sync();
 
   const app = express();
@@ -23,6 +26,8 @@ import { V0MODELS } from './controllers/v0/model.index';
     next();
   });
 
+  // Our application will use this IndexRouter
+  // when we encounter the base endpoint '/api/v0/'
   app.use('/api/v0/', IndexRouter)
 
   // Root URI call

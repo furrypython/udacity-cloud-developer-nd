@@ -1,3 +1,6 @@
+// Database connection code
+
+// The actual library we are using from npm 
 import {Sequelize} from 'sequelize-typescript';
 import { config } from './config/config';
 
