@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import {filterImageFromURL, deleteLocalFiles} from './util/util';
+import { reject } from 'bluebird';
 
 (async () => {
 
@@ -34,9 +35,15 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       return res.status(400)
                 .send(`image_url is required. Enter the URL of a publicly accessible image`);
     }
-    const filteredpath = await filterImageFromURL(image_url);
-    deleteLocalFiles(image_url);
-    return res.sendFile(filteredpath);
+    
+    try {
+      const filteredpath = await filterImageFromURL(image_url);
+      res.status(200).sendFile(filteredpath);
+      deleteLocalFiles([image_url]);
+    } catch(error) {
+      res.status(422).send('URL is not an Image');
+      console.log(error);
+    }
   });
   //! END @TODO1
   
